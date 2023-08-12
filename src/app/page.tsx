@@ -4,8 +4,8 @@ import { Pokemon } from '@/Pokemon.model';
 import { getFirstGenPokemon } from '@/clients/pokemonApiClient';
 
 async function getData(): Promise<Pokemon[]> {
-  const firstGenPokemon = await getFirstGenPokemon();
-  return firstGenPokemon;
+  console.log(result);
+  return result;
 }
 
 export default async function Home() {

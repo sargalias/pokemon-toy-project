@@ -7,7 +7,6 @@ export const bulbasaurApiData = {
       effort: 0,
       stat: {
         name: 'hp',
-        url: 'https://pokeapi.co/api/v2/stat/1/',
       },
     },
     {
@@ -15,7 +14,6 @@ export const bulbasaurApiData = {
       effort: 0,
       stat: {
         name: 'attack',
-        url: 'https://pokeapi.co/api/v2/stat/2/',
       },
     },
     {
@@ -23,7 +21,6 @@ export const bulbasaurApiData = {
       effort: 0,
       stat: {
         name: 'defense',
-        url: 'https://pokeapi.co/api/v2/stat/3/',
       },
     },
     {
@@ -31,7 +28,6 @@ export const bulbasaurApiData = {
       effort: 1,
       stat: {
         name: 'special-attack',
-        url: 'https://pokeapi.co/api/v2/stat/4/',
       },
     },
     {
@@ -39,7 +35,6 @@ export const bulbasaurApiData = {
       effort: 0,
       stat: {
         name: 'special-defense',
-        url: 'https://pokeapi.co/api/v2/stat/5/',
       },
     },
     {
@@ -47,7 +42,6 @@ export const bulbasaurApiData = {
       effort: 0,
       stat: {
         name: 'speed',
-        url: 'https://pokeapi.co/api/v2/stat/6/',
       },
     },
   ],
@@ -56,14 +50,12 @@ export const bulbasaurApiData = {
       slot: 1,
       type: {
         name: 'grass',
-        url: 'https://pokeapi.co/api/v2/type/12/',
       },
     },
     {
       slot: 2,
       type: {
         name: 'poison',
-        url: 'https://pokeapi.co/api/v2/type/4/',
       },
     },
   ],
@@ -78,7 +70,6 @@ export const ivisaurApiData = {
       effort: 0,
       stat: {
         name: 'hp',
-        url: 'https://pokeapi.co/api/v2/stat/1/',
       },
     },
     {
@@ -86,7 +77,6 @@ export const ivisaurApiData = {
       effort: 0,
       stat: {
         name: 'attack',
-        url: 'https://pokeapi.co/api/v2/stat/2/',
       },
     },
     {
@@ -94,7 +84,6 @@ export const ivisaurApiData = {
       effort: 0,
       stat: {
         name: 'defense',
-        url: 'https://pokeapi.co/api/v2/stat/3/',
       },
     },
     {
@@ -102,7 +91,6 @@ export const ivisaurApiData = {
       effort: 1,
       stat: {
         name: 'special-attack',
-        url: 'https://pokeapi.co/api/v2/stat/4/',
       },
     },
     {
@@ -110,7 +98,6 @@ export const ivisaurApiData = {
       effort: 1,
       stat: {
         name: 'special-defense',
-        url: 'https://pokeapi.co/api/v2/stat/5/',
       },
     },
     {
@@ -118,7 +105,6 @@ export const ivisaurApiData = {
       effort: 0,
       stat: {
         name: 'speed',
-        url: 'https://pokeapi.co/api/v2/stat/6/',
       },
     },
   ],
@@ -127,14 +113,12 @@ export const ivisaurApiData = {
       slot: 1,
       type: {
         name: 'grass',
-        url: 'https://pokeapi.co/api/v2/type/12/',
       },
     },
     {
       slot: 2,
       type: {
         name: 'poison',
-        url: 'https://pokeapi.co/api/v2/type/4/',
       },
     },
   ],

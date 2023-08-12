@@ -3,7 +3,6 @@ type Stat = {
   effort: number;
   stat: {
     name: string;
-    url: string;
   };
 };
 
@@ -11,7 +10,6 @@ type Type = {
   slot: number;
   type: {
     name: string;
-    url: string;
   };
 };
 
