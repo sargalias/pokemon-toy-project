@@ -1,5 +1,6 @@
+import React from 'react';
 import { Pokemon } from '@/Pokemon.model';
-import { Card, CardContent, CardMedia, LinearProgress } from '@mui/material';
+import { Card, CardContent, LinearProgress } from '@mui/material';
 import Image from 'next/image';
 import styles from './PokemonCard.module.scss';
 
@@ -18,17 +19,22 @@ const PokemonCard = ({ pokemon }: PokemonCardProps) => {
     <Card className={styles.PokemonCard}>
       <Image
         src={`/sprites/${id}.svg`}
-        alt=""
+        alt={name}
         width="128"
         height="128"
         className={styles.PokemonCard_Image}
       />
       <CardContent className={styles.PokemonCard_Content}>
-        <h2 className={styles.PokemonCard_name}>{name}</h2>
+        <h2
+          className={styles.PokemonCard_name}
+          id={`PokemonCard_Heading_${id}`}
+        >
+          {name}
+        </h2>
         <p>
           <strong>Type:</strong> {typeStr}
         </p>
-        <p>
+        <p className="sr-only">
           <strong>Stats:</strong>
         </p>
         <ul className={styles.PokemonCard_Stats}>
