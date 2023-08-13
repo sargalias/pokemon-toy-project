@@ -54,11 +54,8 @@ const _mapEntityStatLinkToPokemonStat = (
     value,
   } = entityStatLink;
   return {
+    name,
     base_stat: value,
-    effort: 0,
-    stat: {
-      name,
-    },
   };
 };
 
@@ -69,9 +66,6 @@ const _mapPokemonTypeLinkToPokemonType = (
     type: { name },
   } = pokemonTypeLink;
   return {
-    slot: 0,
-    type: {
-      name,
-    },
+    name,
   };
 };

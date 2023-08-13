@@ -13,7 +13,7 @@ type PokemonCardProps = {
 const PokemonCard = ({ pokemon }: PokemonCardProps) => {
   const { id, name, stats, types } = pokemon;
 
-  const typeStr = types.map((type) => type.type.name).join(', ');
+  const typeStr = types.map((type) => type.name).join(', ');
 
   return (
     <Card className={styles.PokemonCard}>
@@ -40,8 +40,8 @@ const PokemonCard = ({ pokemon }: PokemonCardProps) => {
         <ul className={styles.PokemonCard_Stats}>
           {stats.map((stat) => {
             return (
-              <li key={stat.stat.name} className={styles.PokemonCard_Stat}>
-                {stat.stat.name}: {stat.base_stat}
+              <li key={stat.name} className={styles.PokemonCard_Stat}>
+                {stat.name}: {stat.base_stat}
                 <LinearProgress
                   className={styles.PokemonCard_StatBar}
                   variant="determinate"

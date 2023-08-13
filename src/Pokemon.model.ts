@@ -1,16 +1,10 @@
 type Stat = {
+  name: string;
   base_stat: number;
-  effort: number;
-  stat: {
-    name: string;
-  };
 };
 
 type Type = {
-  slot: number;
-  type: {
-    name: string;
-  };
+  name: string;
 };
 
 export type Pokemon = {
