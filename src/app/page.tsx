@@ -1,10 +1,10 @@
 import styles from './page.module.css';
 import PokemonCard from '@/components/PokemonCard/PokemonCard';
 import { Pokemon } from '@/Pokemon.model';
-import { getFirstGenPokemon } from '@/clients/pokemonApiClient';
+import prismaPokemonRepository from '@/prisma/prismaPokemonRepository';
 
 async function getData(): Promise<Pokemon[]> {
-  console.log(result);
+  const result = await prismaPokemonRepository.getFirstGenPokemon();
   return result;
 }
 

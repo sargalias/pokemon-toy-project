@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,9 +23,14 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
-    }
+      "@/*": [
+        "./src/*"
+      ],
+      "@mui/styled-engine": [
+        "./node_modules/@mui/styled-engine-sc"
+      ]
+    },
+    "moduleResolution": "node"
   },
   "include": [
     "next-env.d.ts",
@@ -30,5 +39,7 @@
     ".next/types/**/*.ts",
     "knexfile.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

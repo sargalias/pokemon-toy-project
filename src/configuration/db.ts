@@ -1,21 +1,10 @@
-import knex from 'knex';
+import { PrismaClient } from '@prisma/client';
 
-// TODO: Extract these as environment variables.
+// We could await for the connection to be established here.
+// But we're not in this case because it changes the structure
+// of application setup and it's not worth the effort in a
+// coding test.
 
-const dbConfig = {
-  client: 'pg',
-  connection: {
-    host: 'localhost',
-    user: 'postgres',
-    password: 'example',
-    database: 'postgres',
-  },
-  pool: {
-    min: 2,
-    max: 10,
-  },
-};
+const prisma = new PrismaClient();
 
-const db = knex(dbConfig);
-
-export default db;
+export default prisma;
