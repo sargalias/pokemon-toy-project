@@ -1,5 +1,4 @@
-import styles from './page.module.css';
-import PokemonCard from '@/components/PokemonCard/PokemonCard';
+import PokemonPage from '@/components/PokemonPage/PokemonPage';
 import { Pokemon } from '@/Pokemon.model';
 import prismaPokemonRepository from '@/prisma/prismaPokemonRepository';
 
@@ -14,11 +13,7 @@ export default async function Home() {
   return (
     <main>
       <h1>Pokemon</h1>
-      <div className={styles.PokemonCards}>
-        {data.map((pokemon) => (
-          <PokemonCard pokemon={pokemon} key={pokemon.id} />
-        ))}
-      </div>
+      <PokemonPage pokemonData={data} />
     </main>
   );
 }
