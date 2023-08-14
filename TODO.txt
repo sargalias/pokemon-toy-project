@@ -1,0 +1,14 @@
+Fix some TypeScript hacks.
+    Need to fix prismaPokemonRepository and remove the cast to unknown.
+    In the SortBy React component, don't explicitly cast the types. Use a type guard instead.
+Maybe use enums for types and stats in the database?
+Where to do sorting and filtering:
+    Best is probably FE (Next.js) because we already give it all the data.
+    But do it based on URL parameters so a user can revisit a particular URL.
+Front end usability and performance:
+    Don't show everything for 150 Pokemon.
+        Instead, either load a couple of Pokemon and add infinite scrolling functionality. Or, show some basic data for all Pokemon and add a "detail" view when the user clicks on a Pokemon.
+Add lazy loading to the front end data and images.
+More testing:
+    Especially end to end
+

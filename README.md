@@ -1,34 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Notes
 
-## Getting Started
 
-First, run the development server:
+## Running the project
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Clone the repository.
+2. Run the necessary prisma commands to create, migrate and seed the database. I think it was `npx prisma migrate dev --name init`
+3. Run `npm run dev` to run the project. Run `npm run test` to run the tests.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+I tried to make the application fairly production-ready. I used many production application patterns that I know. I hope you like the results.
 
-To learn more about Next.js, take a look at the following resources:
+Firstly, I created a new Next.js project of the latest version for practice in doing things the new way. The api is inside src/app/api folder.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Project structure:
 
-## Deploy on Vercel
+Here are some things I did:
+- The components folder is a standard folder for a front end project.
+- The app folder is Next.js specific.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+TypeScript:
+- Pokemon.model.ts has TypeScript types of the Pokemon shape our application needs. Other things, like the PokemonApiClient and prismaPokemonRepository must return this shape to our application.
+- I used some TypeScript hacks here and there just because this is a toy project and I didn't want to spend more time to do it properly.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+I created a "clients" folder with PokemonApiClient:
+- Client.model.ts is the data that comes back from the client. It contains mappers to convert it to the data required by our application.
+- It contains tests.
+
+configuration folder:
+- This is a fairly standard folder to set up things like database connections, API keys, and get the values of environment variables.
+
+src/prisma:
+- PokemonEntity file has the shape of the data returned from the database. It also has mappers to convert it to the shape our application needs.
+- prismaPokemonRepository is an implementation of the PokemonRepository.ts.
+- This pattern is the "adapter" pattern in clean architecture.
+
+prisma model:
+- Please note: I haven't used prisma before. Please forgive any small mishaps.
+- I made a fairly standard SQL model for many-to-many relations using a "link" table such as PokemonTypeLink with pokemonId and typeId.
+- But, because the data is small and the possible values are finite, the "link" tables were not strictly necessary, but having them applies data normalisation.
+- In the pokemon table, I used a column for ID and for pokedexIndex, even though they could have been one column. This is up for discussion. Both ways are appropriate in production. I personally prefer separate columns because of the principle of separation of concerns. It allows for future changes such as if pokemon stop being identified by their pokedexIndex or if their pokedexIndex changes in the future to also include strings.
+
+Components folder:
+- It's a bit messy.
+- The names are awful... I would choose better names for a real project.
+
+
+## Other notes
+
+Filtering and sorting:
+- I did it on the front end because we already send all data to it.
+- An improvement for production would to add query parameters and sort/filter according to those. That way, a user can revisit a particular URL and sort. This is useful for things like bookmarking an Amazon product search with filters and ordering.
+
+Testing:
+- Included tests for the React component PokemonCard
+- Included tests for pokemonApiClient which makes fetch calls
+- An improvement would be to add end to end tests using Cypress.
+
+CSS:
+- I used CSS modules because it's what I'm used to, but any approach works.
+
+MUI:
+- I used MUI.
+- In production, I would "wrap" it. E.g. create my own Button component that internally uses MUI button, and then use my Button component. This is somewhat important in case we switch out MUI in the future and also so our components use the public contract WE want and not MUI's.
+
+I didn't do any performance optimisation because it's a toy project.
+
