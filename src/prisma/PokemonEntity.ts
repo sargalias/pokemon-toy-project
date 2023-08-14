@@ -1,4 +1,13 @@
-import { Pokemon } from '../Pokemon.model';
+import { Pokemon, statSorter } from '../Pokemon.model';
+
+type EntityStatNames = [
+  'hp',
+  'attack',
+  'defense',
+  'special-attack',
+  'special-defense',
+  'speed',
+];
 
 export type EntityPokemon = {
   id: number;
@@ -25,7 +34,7 @@ type EntityPokemonStatLink = {
 
 type EntityStat = {
   id: number;
-  name: string;
+  name: EntityStatNames[number];
 };
 
 type EntityType = {
@@ -40,7 +49,9 @@ export const mapToPokemon = (entityPokemon: EntityPokemon): Pokemon => {
   const result = {
     id: pokedexIndex,
     name,
-    stats: pokemonStatLinks.map(_mapEntityStatLinkToPokemonStat),
+    stats: pokemonStatLinks
+      .map(_mapEntityStatLinkToPokemonStat)
+      .sort(statSorter),
     types: pokemonTypeLinks.map(_mapPokemonTypeLinkToPokemonType),
   };
   return result;
