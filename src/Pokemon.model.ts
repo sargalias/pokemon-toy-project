@@ -1,4 +1,4 @@
-type StatNames = [
+export type StatNames = [
   'hp',
   'attack',
   'defense',
