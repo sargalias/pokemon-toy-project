@@ -10,7 +10,7 @@ const getPokemon = async (idOrName: string | number): Promise<Pokemon> => {
 
 const getFirstGenPokemon = async (): Promise<Pokemon[]> => {
   const pokemonApiPromises = [];
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= 151; i++) {
     const promise = getPokemon(i);
     pokemonApiPromises.push(promise);
   }

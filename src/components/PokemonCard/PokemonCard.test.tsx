@@ -2,12 +2,12 @@ import React from 'react';
 import { describe, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import PokemonCard from './PokemonCard';
-import { bulbasaurApiData } from '../../clients/pokemonApiClient/pokemonMockData';
+import { mockPokemonData } from '../..//mockPokemonData';
 
-const bulbasaur = bulbasaurApiData;
+const [bulbasaur] = mockPokemonData;
 const { stats } = bulbasaur;
 
-describe.only('PokemonCard', () => {
+describe('PokemonCard', () => {
   test('should display name', () => {
     render(<PokemonCard pokemon={bulbasaur} />);
     const name = screen.getByRole('heading');
@@ -19,7 +19,7 @@ describe.only('PokemonCard', () => {
 
     const { types } = bulbasaur;
     types.forEach((type) => {
-      const typeName = screen.getByText(type.type.name, { exact: false });
+      const typeName = screen.getByText(type.name, { exact: false });
 
       expect(typeName).toBeInTheDocument();
     });
@@ -29,7 +29,7 @@ describe.only('PokemonCard', () => {
     render(<PokemonCard pokemon={bulbasaur} />);
 
     stats.forEach((stat) => {
-      const statNameRegExp = new RegExp(stat.stat.name, 'i');
+      const statNameRegExp = new RegExp(stat.name, 'i');
       const statValueRegExp = new RegExp(stat.base_stat.toString(), 'i');
 
       const statName = screen.getAllByText(statNameRegExp);
