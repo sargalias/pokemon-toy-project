@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { ApiPokemon } from '@/clients/pokemonApiClient/Client.model';
+import { ApiPokemon } from './pokemonApiClient/Client.model';
 import jsonPokemonData from '../pokemonData.json';
 
 // Using this instead of making network requests for internet politeness

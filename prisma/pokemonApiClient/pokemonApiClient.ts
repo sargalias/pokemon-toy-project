@@ -1,4 +1,4 @@
-import { Pokemon } from '../../Pokemon.model';
+import { Pokemon } from '../../src/Pokemon.model';
 import { ApiPokemon, mapToPokemon } from './Client.model';
 
 const getPokemon = async (idOrName: string | number): Promise<Pokemon> => {

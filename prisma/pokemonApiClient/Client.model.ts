@@ -1,4 +1,4 @@
-import { Pokemon } from '../../Pokemon.model';
+import { Pokemon } from '../../src/Pokemon.model';
 
 type ApiStat = {
   base_stat: number;
