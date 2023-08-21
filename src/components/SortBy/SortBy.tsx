@@ -4,8 +4,8 @@ import { ChangeEvent } from 'react';
 type SortByProps = {
   selectedStatSortOption: StatNames[number] | '';
   setSelectedStatSortOption: (x: StatNames[number] | '') => void;
-  selectedOrderSortOption: string;
-  setSelectedOrderSortOption: (x: string) => void;
+  selectedOrderSortOption: '' | 'asc' | 'desc';
+  setSelectedOrderSortOption: (x: '' | 'asc' | 'desc') => void;
 };
 
 const SortBy = ({
@@ -19,7 +19,7 @@ const SortBy = ({
     setSelectedStatSortOption(value);
   };
   const handleOnChangeOrder = (event: ChangeEvent<HTMLSelectElement>) => {
-    const value = event.target.value;
+    const value = event.target.value as '' | 'asc' | 'desc';
     setSelectedOrderSortOption(value);
   };
 

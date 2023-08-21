@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Pokemon } from '@/Pokemon.model';
 import { Card, CardContent, LinearProgress } from '@mui/material';
 import Image from 'next/image';
@@ -10,7 +10,7 @@ type PokemonCardProps = {
   pokemon: Pokemon;
 };
 
-const PokemonCard = ({ pokemon }: PokemonCardProps) => {
+const PokemonCard = memo(function PokemonCard({ pokemon }: PokemonCardProps) {
   const { id, name, stats, types } = pokemon;
 
   const typeStr = types.map((type) => type.name).join(', ');
@@ -54,6 +54,6 @@ const PokemonCard = ({ pokemon }: PokemonCardProps) => {
       </CardContent>
     </Card>
   );
-};
+});
 
 export default PokemonCard;

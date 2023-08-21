@@ -1,12 +1,17 @@
 import { Pokemon, StatNames } from '@/Pokemon.model';
 
 export type SelectedStatSortOption = StatNames[number] | '';
+export type SelectedOrderSortOption = '' | 'asc' | 'desc';
+
+export type SortOptions = {
+  nameFilter: string;
+  selectedStatSortOption: SelectedStatSortOption;
+  selectedOrderSortOption: SelectedOrderSortOption;
+};
 
 const filterAndSortPokemon = (
   pokemonData: Pokemon[],
-  nameFilter: string,
-  selectedStatSortOption: SelectedStatSortOption,
-  selectedOrderSortOption: string,
+  { nameFilter, selectedStatSortOption, selectedOrderSortOption }: SortOptions,
 ) => {
   let filteredAndSortedPokemonData = Array.from(pokemonData);
 

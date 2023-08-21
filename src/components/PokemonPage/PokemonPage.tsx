@@ -7,6 +7,7 @@ import styles from './PokemonPage.module.scss';
 import { useEffect, useState } from 'react';
 import SortBy from '../SortBy/SortBy';
 import filterAndSortPokemon, {
+  SelectedOrderSortOption,
   SelectedStatSortOption,
 } from '@/utils/filterAndSortPokemon';
 
@@ -18,18 +19,18 @@ const PokemonPage = ({ pokemonData }: PokemonPageProps) => {
   const [nameFilter, setNameFilter] = useState('');
   const [selectedStatSortOption, setSelectedStatSortOption] =
     useState<SelectedStatSortOption>('');
-  const [selectedOrderSortOption, setSelectedOrderSortOption] = useState('');
+  const [selectedOrderSortOption, setSelectedOrderSortOption] =
+    useState<SelectedOrderSortOption>('');
 
   const [filteredAndSortedPokemonData, setFilteredAndSortedPokemonData] =
     useState(pokemonData);
 
   useEffect(() => {
-    const filteredAndSortedPokemonData = filterAndSortPokemon(
-      pokemonData,
+    const filteredAndSortedPokemonData = filterAndSortPokemon(pokemonData, {
       nameFilter,
       selectedStatSortOption,
       selectedOrderSortOption,
-    );
+    });
     setFilteredAndSortedPokemonData(filteredAndSortedPokemonData);
   }, [
     pokemonData,
