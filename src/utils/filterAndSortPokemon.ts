@@ -6,6 +6,7 @@ const filterAndSortPokemon = (
   pokemonData: Pokemon[],
   nameFilter: string,
   selectedStatSortOption: SelectedStatSortOption,
+  selectedOrderSortOption: string,
 ) => {
   let filteredAndSortedPokemonData = Array.from(pokemonData);
 
@@ -18,7 +19,7 @@ const filterAndSortPokemon = (
 
   if (selectedStatSortOption) {
     filteredAndSortedPokemonData = filteredAndSortedPokemonData.sort(
-      _pokemonByStatSorter(selectedStatSortOption),
+      _pokemonByStatSorter(selectedStatSortOption, selectedOrderSortOption),
     );
   }
 
@@ -32,14 +33,21 @@ const _pokemonFilterByName = (pokemonData: Pokemon[], nameFilter: string) => {
 };
 
 const _pokemonByStatSorter =
-  (selectedStatSortOption: StatNames[number]) => (a: Pokemon, b: Pokemon) => {
+  (
+    selectedStatSortOption: StatNames[number],
+    selectedOrderSortOption: string,
+  ) =>
+  (a: Pokemon, b: Pokemon) => {
     const aStat = a.stats.find((stat) => {
       return stat.name === selectedStatSortOption;
     });
     const bStat = b.stats.find((stat) => {
       return stat.name === selectedStatSortOption;
     });
-    return bStat!.base_stat - aStat!.base_stat;
+    if (!selectedOrderSortOption || selectedOrderSortOption === 'desc') {
+      return bStat!.base_stat - aStat!.base_stat;
+    }
+    return aStat!.base_stat - bStat!.base_stat;
   };
 
 export default filterAndSortPokemon;

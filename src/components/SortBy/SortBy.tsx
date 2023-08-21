@@ -4,22 +4,30 @@ import { ChangeEvent } from 'react';
 type SortByProps = {
   selectedStatSortOption: StatNames[number] | '';
   setSelectedStatSortOption: (x: StatNames[number] | '') => void;
+  selectedOrderSortOption: string;
+  setSelectedOrderSortOption: (x: string) => void;
 };
 
 const SortBy = ({
   selectedStatSortOption,
   setSelectedStatSortOption,
+  selectedOrderSortOption,
+  setSelectedOrderSortOption,
 }: SortByProps) => {
-  const handleOnChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  const handleOnChangeStat = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value as StatNames[number] | '';
     setSelectedStatSortOption(value);
+  };
+  const handleOnChangeOrder = (event: ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    setSelectedOrderSortOption(value);
   };
 
   return (
     <div className="SortBy">
       <label htmlFor="">
         Sort by stat:{' '}
-        <select onChange={handleOnChange} value={selectedStatSortOption}>
+        <select onChange={handleOnChangeStat} value={selectedStatSortOption}>
           <option value=""></option>
           <option value="hp">HP</option>
           <option value="attack">Attack</option>
@@ -27,6 +35,14 @@ const SortBy = ({
           <option value="special-attack">Special Attack</option>
           <option value="special-defense">Special Defense</option>
           <option value="speed">Speed</option>
+        </select>
+      </label>
+      <label htmlFor="">
+        Order:{' '}
+        <select onChange={handleOnChangeOrder} value={selectedOrderSortOption}>
+          <option value=""></option>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
         </select>
       </label>
     </div>
