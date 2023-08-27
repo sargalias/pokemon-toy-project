@@ -66,6 +66,3 @@ CSS:
 MUI:
 - I used MUI.
 - In production, I would "wrap" it. E.g. create my own Button component that internally uses MUI button, and then use my Button component. This is somewhat important in case we switch out MUI in the future and also so our components use the public contract WE want and not MUI's.
-
-I didn't do any performance optimisation because it's a toy project.
-

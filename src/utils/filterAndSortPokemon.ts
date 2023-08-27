@@ -26,6 +26,9 @@ const filterAndSortPokemon = (
     filteredAndSortedPokemonData = filteredAndSortedPokemonData.sort(
       _pokemonByStatSorter(selectedStatSortOption, selectedOrderSortOption),
     );
+  } else {
+    filteredAndSortedPokemonData =
+      filteredAndSortedPokemonData.sort(_pokemonByIdSorter);
   }
 
   return filteredAndSortedPokemonData;
@@ -54,5 +57,9 @@ const _pokemonByStatSorter =
     }
     return aStat!.base_stat - bStat!.base_stat;
   };
+
+const _pokemonByIdSorter = (a: Pokemon, b: Pokemon) => {
+  return a.id - b.id;
+};
 
 export default filterAndSortPokemon;

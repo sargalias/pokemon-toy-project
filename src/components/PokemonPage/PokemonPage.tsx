@@ -23,15 +23,18 @@ const PokemonPage = ({ pokemonData }: PokemonPageProps) => {
     useState<SelectedOrderSortOption>('');
 
   const [filteredAndSortedPokemonData, setFilteredAndSortedPokemonData] =
-    useState(pokemonData);
+    useState(structuredClone(pokemonData));
 
   useEffect(() => {
-    const filteredAndSortedPokemonData = filterAndSortPokemon(pokemonData, {
-      nameFilter,
-      selectedStatSortOption,
-      selectedOrderSortOption,
-    });
-    setFilteredAndSortedPokemonData(filteredAndSortedPokemonData);
+    const newFilteredAndSortedPokemonData = filterAndSortPokemon(
+      structuredClone(pokemonData),
+      {
+        nameFilter,
+        selectedStatSortOption,
+        selectedOrderSortOption,
+      },
+    );
+    setFilteredAndSortedPokemonData(newFilteredAndSortedPokemonData);
   }, [
     pokemonData,
     nameFilter,
